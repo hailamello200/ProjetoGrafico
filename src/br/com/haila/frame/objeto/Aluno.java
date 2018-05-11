@@ -14,21 +14,21 @@ import java.util.List;
  */
 public class Aluno {
     
-    private String nome;
+    private String nomeAluno;
     private int matricula;
     private List<Nota> notas;
 
     public Aluno(String nome, int matricula) {
-        this.nome = nome;
+        this.nomeAluno = nome;
         this.matricula = matricula;
     }
 
     public String getNome() {
-        return nome;
+        return nomeAluno;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nomeAluno = nome;
     }
 
     public int getMatricula() {
@@ -46,6 +46,23 @@ public class Aluno {
     public void setNotas(List<Nota> notas) {
         this.notas = notas;
     }
+
+    @Override
+    public String toString() {
+        String totalNota= "";
+        for (Nota nota : notas){
+           
+        } 
+        return "Aluno{" + "nome=" + nomeAluno +", matricula=" + matricula+ ", notas" + notas + '}';
+    }
+     
+     public double calcularMedia(){
+         float somaTotal = 0;
+         for (Nota nota : notas){
+             somaTotal+= nota.getNota();
+         }
+         return somaTotal/notas.size();
+     }
 
   
     

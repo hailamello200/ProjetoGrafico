@@ -15,26 +15,16 @@ public enum TipoAvaliacao {
     PROVA("PROVA"),
     SEMINARIO("SEMINÁRIO");
     
-    private String nome;
-
-    private TipoAvaliacao(String nome) {
-        this.nome = nome;
+    private String nomeAvaliacao;
+    
+    public String getNomeAvaliacao(){
+        return nomeAvaliacao;
     }
-
-    public static TipoAvaliacao getTRABALHO() {
-        return TRABALHO;
+    private TipoAvaliacao(String nome){
+        
     }
+    
 
-    public static TipoAvaliacao getPROVA() {
-        return PROVA;
-    }
-
-    public static TipoAvaliacao getSEMINARIO() {
-        return SEMINARIO;
-    }
-
-    public String getNome() {
-        return nome;
-    }
+   
     
 }

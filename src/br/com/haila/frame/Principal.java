@@ -5,28 +5,27 @@
  */
 package br.com.haila.frame;
 
+import br.com.haila.frame.objeto.Aluno;
+import br.com.haila.frame.objeto.Nota;
 import br.com.haila.frame.objeto.TipoAvaliacao;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author SATC
  */
 public class Principal extends javax.swing.JFrame {
-
-    private Object TipoAvaliacaoEnum;
+    Aluno a;
 
     /**
      * Creates new form Principal
      */
     public Principal() {
-       JComboBox combobox= new JComboBox();
-       combobox.addItem("prova");
-       combobox.addItem("trabalho");
-       combobox.addItem("seminário");
-        
-              initComponents();
+       
+        initComponents();
     }
 
     /**
@@ -48,19 +47,19 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jBCalcular = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField5 = new javax.swing.JTextField();
+        jTFnomeDisciplina = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jCBTipoAvaliacao = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jMatricula = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jNome = new javax.swing.JTextField();
+        jBCadastrar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,8 +87,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("N4");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Calcular");
+        jBCalcular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBCalcular.setText("Calcular");
+        jBCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCalcularActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -99,7 +103,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Nome da Disciplina");
 
-        jCBTipoAvaliacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBTipoAvaliacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Prova", "Trabalho", "Seminário" }));
         jCBTipoAvaliacao.setName("jCBTipoAvaliacao"); // NOI18N
         jCBTipoAvaliacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +131,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCBTipoAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTFnomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -152,7 +156,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(jBCalcular)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)))
@@ -183,11 +187,11 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jBCalcular))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTFnomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jCBTipoAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,14 +211,19 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Nome");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        jNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                jNomeActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("Cadastrar");
+        jBCadastrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -230,17 +239,17 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel9))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+                        .addComponent(jMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel10))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField7)))
+                        .addComponent(jNome)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 46, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBCadastrar)
                 .addGap(21, 21, 21))
         );
         jPanel2Layout.setVerticalGroup(
@@ -251,19 +260,19 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBCadastrar)
                 .addContainerGap())
         );
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel11.setText("Cadastro do Aluno");
+        jLabel11.setText("Calculo de Média");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -297,18 +306,60 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void jNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_jNomeActionPerformed
 
     private void jCBTipoAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoAvaliacaoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jCBTipoAvaliacaoActionPerformed
 
     private void Avaliacao(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Avaliacao
         // TODO add your handling code here:
     }//GEN-LAST:event_Avaliacao
+
+    private void jBCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalcularActionPerformed
+        // TODO add your handling code here:
+        Aluno a = new Aluno(jNome.getText(), Integer.parseInt(jMatricula.getText()));
+        TipoAvaliacao tipo = null;
+        switch (jCBTipoAvaliacao.getSelectedIndex()) {
+            case 0: {
+                tipo = TipoAvaliacao.PROVA;
+                break;
+            }
+
+            case 1: {
+                tipo = TipoAvaliacao.TRABALHO;
+                break;
+            }
+            case 2: {
+                tipo = TipoAvaliacao.SEMINARIO;
+                break;
+            }
+
+        }
+        a.getNotas().add(new Nota(jTFnomeDisciplina.getText(), tipo, Float.parseFloat(jTextField1.getText())));
+        a.getNotas().add(new Nota(jTFnomeDisciplina.getText(), tipo, Float.parseFloat(jTextField2.getText())));
+        a.getNotas().add(new Nota(jTFnomeDisciplina.getText(), tipo, Float.parseFloat(jTextField3.getText())));
+        a.getNotas().add(new Nota(jTFnomeDisciplina.getText(), tipo, Float.parseFloat(jTextField4.getText())));
+        JOptionPane.showMessageDialog(null, a.toString() + "\n" + "Média: " + a.calcularMedia());
+    }//GEN-LAST:event_jBCalcularActionPerformed
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        // TODO add your handling code here:
+        String nome = jNome.getText();
+        int matricula=0;
+        try {
+            matricula = Integer.parseInt(jMatricula.getText());
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Você digitou errado, " + nfe);
+            throw new RuntimeException();
+        }
+         a = new Aluno(nome, matricula);
+        JOptionPane.showMessageDialog(this, a.toString());
+
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,8 +397,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBCadastrar;
+    private javax.swing.JButton jBCalcular;
     private javax.swing.JComboBox<String> jCBTipoAvaliacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -360,15 +411,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jMatricula;
+    private javax.swing.JTextField jNome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTFnomeDisciplina;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }
